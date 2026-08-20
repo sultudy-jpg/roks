@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import rokShippingLogo from './ROK_SHIPPING_logo_option_1_transparent.png';
 
 const services = [
   { no: '01', icon: 'ship', title: '해상 화물 운송', en: 'OCEAN FREIGHT', text: '국내외 주요 항만을 연결하는 안정적인 해상 운송 서비스를 제공합니다.' },
@@ -23,7 +24,7 @@ function App() {
   return (
     <main>
       <header className="nav-wrap">
-        <a className="brand" href="#top" aria-label="ROK Shipping 홈"><span className="brand-mark"><i></i><i></i><i></i></span><span><b>ROK</b><small>SHIPPING CO., LTD.</small></span></a>
+        <a className="brand" href="#top" aria-label="ROK Shipping 홈"><img src={rokShippingLogo} alt="ROK Shipping Co., Ltd." /></a>
         <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="메뉴 열기"><span></span><span></span></button>
         <nav className={menuOpen ? 'open' : ''}><button onClick={() => scrollTo('about')}>회사소개</button><button onClick={() => scrollTo('service')}>사업영역</button><button onClick={() => scrollTo('network')}>운항 네트워크</button><button onClick={() => scrollTo('contact')}>문의하기</button></nav>
         <button className="quote" onClick={() => scrollTo('contact')}>운송 문의 <Icon name="arrow" /></button>
@@ -36,7 +37,7 @@ function App() {
       <section className="services section" id="service"><div className="section-head"><div><div className="section-label light">02 &nbsp; OUR SERVICES</div><h2>최적의 물류 솔루션</h2></div><p>화물의 출발부터 도착까지,<br/>ROK SHIPPING이 함께합니다.</p></div><div className="service-list">{services.map((item) => <article key={item.no}><span className="service-no">{item.no}</span><div className="service-icon"><Icon name={item.icon}/></div><div><small>{item.en}</small><h3>{item.title}</h3><p>{item.text}</p></div><button aria-label={`${item.title} 자세히 보기`}><Icon name="arrow"/></button></article>)}</div></section>
       <section className="network section" id="network"><div><div className="section-label">03 &nbsp; GLOBAL NETWORK</div><h2>세계의 항만을<br/><em>하나의 항로로.</em></h2><p>아시아를 중심으로 전 세계 주요 항만과 연결된<br/>ROK SHIPPING의 물류 네트워크를 만나보세요.</p><button className="primary navy">운항 네트워크 보기 <Icon name="arrow"/></button></div><div className="map" aria-label="글로벌 운항 네트워크 지도"><span className="line l1"></span><span className="line l2"></span><i className="port p1"></i><i className="port p2"></i><i className="port p3"></i><i className="port p4"></i><b>BUSAN</b><b>SHANGHAI</b><b>SINGAPORE</b><b>LOS ANGELES</b></div></section>
       <section className="contact" id="contact"><p>READY TO MOVE?</p><h2>당신의 화물을 위한<br/>새로운 항해를 시작하세요.</h2><a href="mailto:info@rokshipping.com">운송 문의하기 <Icon name="arrow"/></a></section>
-      <footer><a className="brand footer-brand" href="#top"><span className="brand-mark"><i></i><i></i><i></i></span><span><b>ROK</b><small>SHIPPING CO., LTD.</small></span></a><p>※ 본 페이지는 홈페이지 제작을 위한 시안이며, 회사 정보와 연락처는 실제 자료로 교체가 필요합니다.</p><span>© 2026 ROK SHIPPING CO., LTD.</span></footer>
+      <footer><a className="brand footer-brand" href="#top" aria-label="ROK Shipping 홈"><img src={rokShippingLogo} alt="ROK Shipping Co., Ltd." /></a><p>※ 본 페이지는 홈페이지 제작을 위한 시안이며, 회사 정보와 연락처는 실제 자료로 교체가 필요합니다.</p><span>© 2026 ROK SHIPPING CO., LTD.</span></footer>
     </main>
   );
 }
