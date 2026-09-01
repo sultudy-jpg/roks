@@ -54,7 +54,16 @@ function App() {
     <section className="network section" id="network"><div><div className="section-label">04 &nbsp; GLOBAL NETWORK</div><h2>어디에서든,<br/><em>가장 실용적인 경로로.</em></h2><p>항공, 해상, 복합운송을 유연하게 조합해 한국과 일본, 중국, 동남아시아, 유럽, 미주 및 전 세계 프로젝트 현장을 연결합니다.</p><div className="network-tags"><span>AIR</span><span>OCEAN</span><span>MULTIMODAL</span></div></div><div className="network-visual"><div className="map" aria-label="글로벌 서비스 네트워크"><span className="line l1"></span><span className="line l2"></span><span className="line l3"></span><i className="port p1"></i><i className="port p2"></i><i className="port p3"></i><i className="port p4"></i><i className="port p5"></i><b>KOREA</b><b>ASIA</b><b>EUROPE</b><b>AMERICAS</b><b>WORLDWIDE</b></div><div className="network-photos"><figure><img src={transhipPhoto} alt="선박 간 환적 작업 현장" loading="lazy"/><figcaption><small>OCEAN NETWORK</small><strong>Transshipment</strong></figcaption></figure><figure className="worldwide-photo"><img src={worldwidePhoto} alt="미주 프로젝트 글로벌 네트워크" loading="lazy"/><figcaption><small>PROJECT NETWORK</small><strong>Worldwide</strong></figcaption></figure></div></div></section>
     <section className="promise"><div className="section-label light">OUR PROMISE</div><p>FAST · SAFE · ACCURATE</p><h2>모든 중요 화물을<br/>안전하고, 빠르고, 정확하게.</h2></section>
     <section className="contact" id="contact"><p>YOUR CRITICAL SHIPMENT, OUR PRIORITY</p><h2>시간이 중요한 운송,<br/>ROK SHIPPING과 상의하세요.</h2><a href="mailto:roks@roks.kr">운송 문의하기 <Icon name="arrow"/></a></section>
-    <footer><Brand footer/><p>Project Support · Urgent Air Freight · Pharmaceutical · Precision & High-Value Cargo</p><span>© 2026 ROK SHIPPING CO., LTD.</span></footer>
+    <footer>
+      <Brand footer/>
+      <address className="footer-contact">
+        <strong>R.O.K Shipping Co., Ltd.</strong>
+        <span>B-1819, 19 Jongno, Jongno-Gu, Seoul, Korea</span>
+        <span>(Le Meilleur Jongno Town, Jongno 1-ga)</span>
+        <span className="footer-contact-links"><a href="tel:+8223228907">T. +82-2-322-8907</a><a href="fax:+82260086639">F. +82-2-6008-6639</a><a href="mailto:roks@roks.kr">Email: roks@roks.kr</a></span>
+      </address>
+      <div className="footer-meta"><p>Project Support · Urgent Air Freight · Pharmaceutical · Precision & High-Value Cargo</p><span>© 2026 ROK SHIPPING CO., LTD.</span></div>
+    </footer>
   </main>;
 }
 export default App;
