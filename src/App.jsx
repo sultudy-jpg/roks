@@ -1,43 +1,40 @@
 import { useState } from 'react';
+import logo from './ROK_SHIPPING_logo_option_1_transparent.png';
 import './App.css';
 
 const services = [
-  { no: '01', icon: 'ship', title: '해상 화물 운송', en: 'OCEAN FREIGHT', text: '국내외 주요 항만을 연결하는 안정적인 해상 운송 서비스를 제공합니다.' },
-  { no: '02', icon: 'box', title: '벌크·프로젝트 화물', en: 'PROJECT CARGO', text: '화물의 특성과 규모에 맞춘 전문 선적 계획과 운송 솔루션을 제안합니다.' },
-  { no: '03', icon: 'route', title: '통합 물류 관리', en: 'TOTAL LOGISTICS', text: '선적부터 통관, 내륙 운송까지 전 과정을 한 번에 관리합니다.' },
+  { no: '01', icon: 'project', en: 'PROJECT SUPPORT', title: '프로젝트 지원 · 보증 화물', text: '보증 교체품, 긴급 예비 부품, 수리·반송 등 프로젝트 운영을 멈추지 않게 하는 운송을 지원합니다.' },
+  { no: '02', icon: 'air', en: 'URGENT AIR FREIGHT', title: '긴급 항공 운송', text: 'Next Flight Out부터 Door-to-Door까지, 시간에 민감한 화물을 가장 빠른 경로로 연결합니다.' },
+  { no: '03', icon: 'health', en: 'PHARMA & HEALTHCARE', title: '제약 · 헬스케어 물류', text: '의약품 원료와 온도·문서 관리가 중요한 헬스케어 화물을 세심하게 취급합니다.' },
+  { no: '04', icon: 'precision', en: 'PRECISION & HIGH-VALUE', title: '정밀 · 고가 화물', text: '정밀 기계, 제어 장비 등 특별 취급이 필요한 민감 화물을 면밀하게 관리합니다.' },
 ];
-
+const projects = [
+  { place: 'CHILE', name: 'Angamos I & II', detail: '240MW Transformer · Steam Drum' },
+  { place: 'CHILE', name: 'Ventanas · Campiche', detail: 'Steam Turbine · Condenser' },
+  { place: 'KOREA', name: 'KEPCO Bucheon CCPP', detail: '147t Gas Turbine Unit' },
+  { place: 'KOREA', name: 'FINEX · Forging Press', detail: '250t Columns Package · 150t Press Shaft' },
+];
 function Icon({ name }) {
   const paths = {
-    ship: <><path d="M3 18h18M5 18l2 3h10l2-3M6 18l1-8h10l1 8M9 10V6h6v4M12 6V3"/><path d="M8 14h8"/></>,
-    box: <><path d="m4 7 8-4 8 4v10l-8 4-8-4Z"/><path d="m4 7 8 4 8-4M12 11v10M8 5l8 4"/></>,
-    route: <><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18h3a3 3 0 0 0 3-3V9a3 3 0 0 1 3-3h1"/><path d="m17 18 2 2 3-4"/></>,
+    project: <><path d="M4 8h16v11H4zM8 8V5h8v3M9 13h6"/></>, air: <><path d="m3 13 18-8-7 14-3-5-4 2 1-5Z"/><path d="m8 11 6 3"/></>,
+    health: <><path d="M8 3h8v18H8zM3 8h18v8H3z"/></>, precision: <><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></>,
     arrow: <><path d="M5 12h14M14 7l5 5-5 5"/></>,
-  };
-  return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
+  }; return <svg viewBox="0 0 24 24" aria-hidden="true">{paths[name]}</svg>;
 }
-
+function Brand({ footer = false }) { return <a className={`brand ${footer ? 'footer-brand' : ''}`} href="#top" aria-label="ROK Shipping 홈"><img src={logo} alt="ROK Shipping" /></a>; }
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const scrollTo = (id) => { document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' }); setMenuOpen(false); };
-  return (
-    <main>
-      <header className="nav-wrap">
-        <a className="brand" href="#top" aria-label="ROK Shipping 홈"><span className="brand-mark"><i></i><i></i><i></i></span><span><b>ROK</b><small>SHIPPING CO., LTD.</small></span></a>
-        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="메뉴 열기"><span></span><span></span></button>
-        <nav className={menuOpen ? 'open' : ''}><button onClick={() => scrollTo('about')}>회사소개</button><button onClick={() => scrollTo('service')}>사업영역</button><button onClick={() => scrollTo('network')}>운항 네트워크</button><button onClick={() => scrollTo('contact')}>문의하기</button></nav>
-        <button className="quote" onClick={() => scrollTo('contact')}>운송 문의 <Icon name="arrow" /></button>
-      </header>
-      <section className="hero" id="top"><div className="hero-grid"></div><div className="hero-glow"></div>
-        <div className="hero-copy"><p className="eyebrow"><span></span> BEYOND THE HORIZON</p><h1>바다를 넘어,<br/><em>신뢰를 운송합니다.</em></h1><p className="lead">ROK SHIPPING은 전문성과 책임감을 바탕으로<br className="desktop"/> 고객의 화물을 세계 곳곳에 안전하게 연결합니다.</p><div className="hero-actions"><button className="primary" onClick={() => scrollTo('service')}>서비스 알아보기 <Icon name="arrow" /></button><button className="text-link" onClick={() => scrollTo('about')}>ROK SHIPPING 소개 <span>↘</span></button></div></div>
-        <div className="ship-art" aria-hidden="true"><div className="sun"></div><div className="ship"><div className="containers"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div className="bridge"><span></span></div><div className="hull"><b>ROK SHIPPING</b></div></div><div className="wave one"></div><div className="wave two"></div></div><div className="scroll">SCROLL TO EXPLORE <span>↓</span></div>
-      </section>
-      <section className="about section" id="about"><div className="section-label">01 &nbsp; ABOUT US</div><div className="about-copy"><p className="kicker">대한민국을 대표하는 신뢰의 해운 파트너</p><h2>고객의 비즈니스가<br/>멈추지 않도록.</h2></div><div className="about-detail"><p>ROK SHIPPING CO., LTD.는 축적된 해운 경험과 글로벌 네트워크를 기반으로 정확하고 효율적인 물류 서비스를 제공합니다.</p><p>항상 고객의 입장에서 고민하며, 어떤 항로에서도 흔들림 없는 운송 품질을 약속합니다.</p><button className="under-link">회사 소개 자세히 보기 <Icon name="arrow" /></button></div><div className="numbers"><div><strong>24/7</strong><span>실시간 운송 지원</span></div><div><strong>Global</strong><span>주요 항만 네트워크</span></div><div><strong>Safety</strong><span>안전을 최우선으로</span></div></div></section>
-      <section className="services section" id="service"><div className="section-head"><div><div className="section-label light">02 &nbsp; OUR SERVICES</div><h2>최적의 물류 솔루션</h2></div><p>화물의 출발부터 도착까지,<br/>ROK SHIPPING이 함께합니다.</p></div><div className="service-list">{services.map((item) => <article key={item.no}><span className="service-no">{item.no}</span><div className="service-icon"><Icon name={item.icon}/></div><div><small>{item.en}</small><h3>{item.title}</h3><p>{item.text}</p></div><button aria-label={`${item.title} 자세히 보기`}><Icon name="arrow"/></button></article>)}</div></section>
-      <section className="network section" id="network"><div><div className="section-label">03 &nbsp; GLOBAL NETWORK</div><h2>세계의 항만을<br/><em>하나의 항로로.</em></h2><p>아시아를 중심으로 전 세계 주요 항만과 연결된<br/>ROK SHIPPING의 물류 네트워크를 만나보세요.</p><button className="primary navy">운항 네트워크 보기 <Icon name="arrow"/></button></div><div className="map" aria-label="글로벌 운항 네트워크 지도"><span className="line l1"></span><span className="line l2"></span><i className="port p1"></i><i className="port p2"></i><i className="port p3"></i><i className="port p4"></i><b>BUSAN</b><b>SHANGHAI</b><b>SINGAPORE</b><b>LOS ANGELES</b></div></section>
-      <section className="contact" id="contact"><p>READY TO MOVE?</p><h2>당신의 화물을 위한<br/>새로운 항해를 시작하세요.</h2><a href="mailto:info@rokshipping.com">운송 문의하기 <Icon name="arrow"/></a></section>
-      <footer><a className="brand footer-brand" href="#top"><span className="brand-mark"><i></i><i></i><i></i></span><span><b>ROK</b><small>SHIPPING CO., LTD.</small></span></a><p>※ 본 페이지는 홈페이지 제작을 위한 시안이며, 회사 정보와 연락처는 실제 자료로 교체가 필요합니다.</p><span>© 2026 ROK SHIPPING CO., LTD.</span></footer>
-    </main>
-  );
+  return <main>
+    <header className="nav-wrap"><Brand/><button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-label="메뉴 열기"><span></span><span></span></button><nav className={menuOpen ? 'open' : ''}><button onClick={() => scrollTo('about')}>회사소개</button><button onClick={() => scrollTo('service')}>전문 서비스</button><button onClick={() => scrollTo('heritage')}>프로젝트 경험</button><button onClick={() => scrollTo('network')}>글로벌 네트워크</button></nav><button className="quote" onClick={() => scrollTo('contact')}>운송 문의 <Icon name="arrow"/></button></header>
+    <section className="hero" id="top"><div className="hero-grid"></div><div className="hero-glow"></div><div className="hero-copy"><p className="eyebrow"><span></span> CRITICAL & SPECIALIZED LOGISTICS</p><h1>결정적인 순간,<br/><em>가장 정확한 물류.</em></h1><p className="lead">긴급 부품부터 의약품, 정밀 장비까지.<br className="desktop"/> 시간과 안전이 중요한 화물을 빠르고 세심하게 연결합니다.</p><div className="hero-actions"><button className="primary" onClick={() => scrollTo('service')}>전문 서비스 보기 <Icon name="arrow"/></button><button className="text-link" onClick={() => scrollTo('about')}>ROK SHIPPING 소개 <span>↘</span></button></div></div><div className="cargo-visual" aria-hidden="true"><div className="orbit o1"></div><div className="orbit o2"></div><div className="cargo-card"><span>TIME CRITICAL</span><strong>NEXT<br/>FLIGHT<br/>OUT</strong><i>24 / 7 RESPONSE</i></div><div className="route-dot d1"></div><div className="route-dot d2"></div><div className="route-dot d3"></div></div><div className="scroll">SCROLL TO EXPLORE <span>↓</span></div></section>
+    <section className="about section" id="about"><div className="section-label">01 &nbsp; INTRODUCTION</div><div className="about-copy"><p className="kicker">SPECIALIZED LOGISTICS FOR CRITICAL CARGO</p><h2>중요한 화물에는<br/>더 정교한 물류가<br/>필요합니다.</h2></div><div className="about-detail"><p>ROK SHIPPING CO., LTD.는 시간에 민감한 고가·특수 화물을 위한 전문 물류 서비스를 제공하기 위해 설립된 NeoKorTrans Co., Ltd.의 자매회사입니다.</p><p>대형 플랜트·프로젝트 물류를 뒷받침하는 보증 화물과 긴급 교체 부품, 수리·반송, 긴급 항공 운송을 비롯해 의약품, 정밀 기계, 고가 장비를 전문적으로 다룹니다.</p></div><div className="numbers"><div><strong>Speed</strong><span>긴급 상황에 빠른 대응</span></div><div><strong>Safety</strong><span>민감 화물의 세심한 취급</span></div><div><strong>Control</strong><span>운송 전 과정의 긴밀한 관리</span></div></div></section>
+    <section className="services section" id="service"><div className="section-head"><div><div className="section-label light">02 &nbsp; CORE SERVICES</div><h2>Critical Cargo,<br/>Handled Precisely.</h2></div><p>속도, 안전, 정확한 문서와 커뮤니케이션이<br/>필수적인 운송에 집중합니다.</p></div><div className="service-list">{services.map(item => <article key={item.no}><span className="service-no">{item.no}</span><div className="service-icon"><Icon name={item.icon}/></div><div><small>{item.en}</small><h3>{item.title}</h3><p>{item.text}</p></div><span className="service-arrow"><Icon name="arrow"/></span></article>)}</div></section>
+    <section className="heritage section" id="heritage"><div className="heritage-intro"><div><div className="section-label">03 &nbsp; PROJECT HERITAGE</div><h2>대형 프로젝트에서 이어진<br/><em>실전 물류 경험.</em></h2></div><p>ROK SHIPPING은 NeoKorTrans와 그 전신인 KorTrans가 쌓아온 발전소, 제철소, 석유화학 플랜트 및 중공업 프로젝트 경험과 글로벌 네트워크를 기반으로 합니다.</p></div><div className="project-grid">{projects.map((project, i) => <article key={project.name}><span>0{i + 1} / {project.place}</span><h3>{project.name}</h3><p>{project.detail}</p></article>)}</div><div className="heritage-band"><strong>PLANT</strong><i></i><strong>POWER</strong><i></i><strong>STEEL</strong><i></i><strong>MULTIMODAL</strong></div></section>
+    <section className="network section" id="network"><div><div className="section-label">04 &nbsp; GLOBAL NETWORK</div><h2>어디에서든,<br/><em>가장 실용적인 경로로.</em></h2><p>항공, 해상, 복합운송을 유연하게 조합해 한국과 일본, 중국, 동남아시아, 유럽, 미주 및 전 세계 프로젝트 현장을 연결합니다.</p><div className="network-tags"><span>AIR</span><span>OCEAN</span><span>MULTIMODAL</span></div></div><div className="map" aria-label="글로벌 서비스 네트워크"><span className="line l1"></span><span className="line l2"></span><span className="line l3"></span><i className="port p1"></i><i className="port p2"></i><i className="port p3"></i><i className="port p4"></i><i className="port p5"></i><b>KOREA</b><b>ASIA</b><b>EUROPE</b><b>AMERICAS</b><b>WORLDWIDE</b></div></section>
+    <section className="promise"><div className="section-label light">OUR PROMISE</div><p>FAST · SAFE · ACCURATE</p><h2>모든 중요 화물을<br/>안전하고, 빠르고, 정확하게.</h2></section>
+    <section className="contact" id="contact"><p>YOUR CRITICAL SHIPMENT, OUR PRIORITY</p><h2>시간이 중요한 운송,<br/>ROK SHIPPING과 상의하세요.</h2><a href="mailto:info@rokshipping.com">운송 문의하기 <Icon name="arrow"/></a></section>
+    <footer><Brand footer/><p>Project Support · Urgent Air Freight · Pharmaceutical · Precision & High-Value Cargo</p><span>© 2026 ROK SHIPPING CO., LTD.</span></footer>
+  </main>;
 }
 export default App;
